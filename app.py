@@ -28,3 +28,14 @@ def findCard(cardID : str) -> str:
     if result == '' or result is None:
          result = '查無此卡'
     return result
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Dec 29 20:03:37 2021
+
+@author: eugenetseng
+"""
+
+cardInfo = findCard('309-AAA') #傳入卡號 取回卡片效果（str格式）
+print(cardInfo)
