@@ -36,12 +36,9 @@ Created on Wed Dec 29 20:03:37 2021
 @author: eugenetseng
 """
 
-from FindCard import findCard
-
 cardInfo = findCard('309-AAA') #傳入卡號 取回卡片效果（str格式）
 print(cardInfo)
 
-from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 from selenium.webdriver.common.by import By
