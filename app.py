@@ -39,3 +39,41 @@ Created on Wed Dec 29 20:03:37 2021
 
 cardInfo = findCard('309-AAA') #傳入卡號 取回卡片效果（str格式）
 print(cardInfo)
+
+
+
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+import time
+from selenium.webdriver.common.by import By
+
+
+PATH = "./chromedriver.exe"
+driver = webdriver.Chrome(PATH)
+
+driver.get("https://www.db.yugioh-card.com/yugiohdb/deck_search.action?request_locale=ja")
+search = driver.find_element_by_name("cardname")
+search.send_keys("マジクリボー") #之後用OCR掃出來的卡名取代這裡的マジクリボー
+search.send_keys(Keys.RETURN)
+
+time.sleep(5)
+
+links = driver.find_elements(By.TAG_NAME, "a")
+
+count = 0
+while count <=29:
+    del links[0]
+    count = count+1
+
+addrs = [0,1,2,3,4]
+count = 0
+while count <= 4:
+    addrs.insert(count,links[0])
+    del links[0]
+    count = count+1
+    
+for addr in addrs:
+    print (addr.get_attribute("href"))
+#addrs是一個list，裡面存了最新分享的五個牌組的網址
+time.sleep(5)
+driver.quit()
